@@ -27,6 +27,11 @@ class Player:
             Dentist,
             UnexpectedTaxi,
             Birthday,
+            Actions,
+            SeriousBusiness,
+            BuyHouse,
+            GoodCompany,
+            EnterHack
         }
         self.object_events = set()
         self.default_event = Event

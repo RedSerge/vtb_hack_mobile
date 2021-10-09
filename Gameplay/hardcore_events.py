@@ -1,5 +1,6 @@
 from events import Event, ComplexEvent
 
+#Independent: Actions, SeriousBusiness, BuyHouse, GoodCompany, EnterHack
 
 class Actions(ComplexEvent):
     def __init__(self, *args, **kwargs):
@@ -104,3 +105,81 @@ class SeriousFailure(Event):
 
     def __str__(self):
         return "Ваш бизнес пришлось закрыть."
+
+
+class BuyHouse(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.instant_cash = -1100
+        self.cash_per_turn = 150
+        self.enable_events = {
+            SellHouse
+        }
+
+    def __str__(self):
+        return "Ваш сосед переезжает и продает свой дом. \n - Предложенная цена: 1100р \n - Средняя рыночная цена: 950р \n - Пассивный доход за каждый ход: 150р"
+
+
+class SellHouse(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.instant_cash = 1300
+        self.cash_per_turn = -150
+
+    def __str__(self):
+        return "Спрос на недвижимость вырос, ваш дом подорожал. Теперь его цена составляет 1300р. Хотите продать его?"
+
+class GoodCompany(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.instant_cash = 77
+        self.enable_events = {
+            BetterCompany
+        }
+
+    def __str__(self):
+        return 'У вас есть возможность купить акции компании "August Investment" \n - Текущая цена: 77 рублей \n - Справедливая цена: 177 рублей'
+
+
+class BetterCompany(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.instant_cash = 112
+        self.enable_events = {
+            BetterCompany
+        }
+
+    def __str__(self):
+        return 'Акции компании "August Investment" выросли на 50% \n - Текущая цена: 112 \n - Справедливая цена: 177'
+
+
+class EnterHack(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.enable_events = {
+            WinHack
+        }
+
+    def __str__(self):
+        return 'Вас позвали поучаствовать в хакатоне [More.tech](http://More.tech) 3.0'
+
+
+class WinHack(Event):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.positive = True
+        self.single = True
+        self.instant_cash = 3000
+
+    def __str__(self):
+        return 'Вы выиграли хакатон + 3000 рублей!'
