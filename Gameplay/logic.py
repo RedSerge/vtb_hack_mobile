@@ -1,5 +1,6 @@
 from Gameplay.support import *
 from Gameplay.events import *
+from Gameplay.hardcore_events import *
 
 from random import choice
 
@@ -117,4 +118,3 @@ class Gameplay:
     @classmethod
     def reset(cls):
         cls.active_player = Player()
-
