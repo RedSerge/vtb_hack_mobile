@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from MobileApp.views import NextEventView
+from MobileApp.views import (
+    NextEventView,
+    ResetEventView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/get-next-event', NextEventView.as_view())
+    path('api/reset-event', ResetEventView.as_view()),
+    path('api/get-next-event', NextEventView.as_view()),
 ]
