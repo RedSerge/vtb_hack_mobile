@@ -42,8 +42,8 @@ class SeriousBusiness(Event):
         self.instant_cash = -1000
         self.enable_events = {
             SeriousInsurance,
-            SeriousGrowth
-            SeriousFailure
+            SeriousGrowth,
+            SeriousFailure,
         }
 
     def __str__(self):
