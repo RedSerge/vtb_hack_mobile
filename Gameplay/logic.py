@@ -13,6 +13,7 @@ START_CASH = 1000
 class Player:
 
     def __init__(self):
+        self.restful = {}
         self.negative_history = []
         self.current_threshold = EVENT_THRESHOLD
         self.current_turn = 0
@@ -55,8 +56,8 @@ class Player:
 
     def apply_event(self, ev_cls):
         ev = ev_cls()
-        print(str(ev), type(ev))
-        if hasattr(ev, 'input'):
+        self.restful['text'] = str(ev)
+        if hasattr(ev, 'input'):    # DEBUG: rebuild the logic for REST API
             if not ev.input():
                 return
         self.cash += ev.instant_cash
@@ -72,6 +73,7 @@ class Player:
     def apply_events_per_turn(self):
         sum_per_turn = sum([i.spend_turn() for i in self.object_events])
         self.cash += sum_per_turn
+        self.restful['income'] = sum_per_turn  # DEBUG: just demo
         self.clean_objects()
         return sum_per_turn
 
@@ -91,6 +93,7 @@ class Player:
         return event
 
     def run(self):
+        self.restful = {}
         if self.current_turn > MAX_TURNS or self.cash <= 0:
             return False
         event_cls = self.choose_simple_event()
@@ -99,6 +102,9 @@ class Player:
         self.apply_events_per_turn()
         self.apply_event(event_cls)
         self.current_turn += 1
+
+        self.restful['cash'] = self.cash    # DEBUG: just demo
+
         return True
 
     def simple_events_count(self, negative=True):

@@ -2,7 +2,7 @@ from json_views.views import JSONDataView
 from rest_framework import permissions
 from rest_framework.views import APIView
 
-from Gameplay.logic import Gameplay
+from Gameplay.logic import Gameplay as Game
 
 
 class ResetEventView(JSONDataView, APIView):
@@ -10,24 +10,20 @@ class ResetEventView(JSONDataView, APIView):
 
     def get_context_data(self, **kwargs):
         context = super(NextEventView, self).get_context_data(**kwargs)
-        Gameplay.reset()
+        Game.reset()
         return dict(context, **{
             'message': 'OK'
         })
+
 
 class NextEventView(JSONDataView, APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_context_data(self, **kwargs):
         context = super(NextEventView, self).get_context_data(**kwargs)
-        return dict(context, **{
-            'text': 'продажа',
-            'controls': {
-                'min': 20,
-                'max': 40,
-            },
-            'actions': [
-                {'text': 'продать'},
-                {'text': 'купить'},
-            ],
-        })
+        success = Game.active_player.run()
+        if not success:
+            Game.active_player.restful = {
+                "error": "Игра-то закончилась"
+            }
+        return dict(context, **Game.active_player.restful)
