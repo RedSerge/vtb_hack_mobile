@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/reset-event', ResetEventView.as_view()),
     path('api/get-next-event', NextEventView.as_view()),
+    path('/api/status', StatusView.as_view()),
 ]

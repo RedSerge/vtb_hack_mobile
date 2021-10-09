@@ -35,6 +35,9 @@ class Event:
     def __str__(self):
         return "Ничего не случилось"
 
+    def history_str(self):
+        return "Ничего не произошло"
+
 
 class ComplexEvent(Event):
     def __init__(
@@ -52,7 +55,7 @@ class ComplexEvent(Event):
         self.value_current = value_current
 
 
-# Частные реализации:
+#   Independent: Job, Legacy, Friend, RepairTV, Dentist, UnexpectedTaxi, Birthday
 
 
 class Job(Event):
@@ -68,6 +71,9 @@ class Job(Event):
     def __str__(self):
         return "Вы нашли новую работу, теперь вы получаете +500 рублей каждый ход."
 
+    def history_str(self):
+        return "Нашел работу"
+
 
 class Promotion(Event):
     def __init__(self, *args, **kwargs):
@@ -77,6 +83,9 @@ class Promotion(Event):
 
     def __str__(self):
         return "Вас повысили, теперь вы получаете +250 рублей каждый ход."
+
+    def history_str(self):
+        return "Получил повышение"
 
 
 class Legacy(Event):
@@ -88,6 +97,9 @@ class Legacy(Event):
     def __str__(self):
         return "Вы получили наследство +500 рублей."
 
+    def history_str(self):
+        return "Получил наследство"
+
 
 class Friend(Event):
     def __init__(self, *args, **kwargs):
@@ -98,6 +110,9 @@ class Friend(Event):
     def __str__(self):
         return "Ваш старый знакомый вернул вам долг +350 рублей."
 
+    def history_str(self):
+        return "Вернули долг"
+
 
 class RepairTV(Event):
     def __init__(self, *args, **kwargs):
@@ -106,6 +121,9 @@ class RepairTV(Event):
 
     def __str__(self):
         return "У вас сломался телевизор. Ремонт составил -100 рублей."
+
+    def history_str(self):
+        return "Сломался телевизор"
 
 
 class Dentist(Event):
@@ -117,6 +135,9 @@ class Dentist(Event):
     def __str__(self):
         return "Вам пришлось сходить к стоматологу, стоимость лечения составит в сумме -200 рублей за 4 посещения."
 
+    def history_str(self):
+        return "Сломался телевизор"
+
 
 class UnexpectedTaxi(Event):
     def __init__(self, *args, **kwargs):
@@ -125,6 +146,9 @@ class UnexpectedTaxi(Event):
 
     def __str__(self):
         return "Вы опоздали на электричку, вам пришлось поехать на такси -150 рублей."
+
+    def history_str(self):
+        return "Опоздал на электричку"
 
 
 class Birthday(Event):
@@ -135,3 +159,6 @@ class Birthday(Event):
 
     def __str__(self):
         return "У вашей мамы день рождения. Вы сделали ей подарок на -200 рублей."
+
+    def history_str(self):
+        return "Потратился на подарок"

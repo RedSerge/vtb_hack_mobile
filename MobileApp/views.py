@@ -27,3 +27,12 @@ class NextEventView(JSONDataView, APIView):
                 "error": "Игра-то закончилась"
             }
         return dict(context, **Game.active_player.restful)
+
+
+class StatusView(JSONDataView, APIView):
+
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_context_data(self, **kwargs):
+        context = super(StatusView, self).get_context_data(**kwargs)
+        return dict(context, **{})
