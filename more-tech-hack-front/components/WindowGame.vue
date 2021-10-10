@@ -12,14 +12,12 @@
         :class='$style.card'
         class='d-flex flex-column align-stretch'
       >
-        <p>
-          {{ event.text }}
-        </p>
+        <p v-html='event.text'/>
 
-        <div v-if='event.controls && event.controls.min' class='my-8'>
+        <div v-if='event.controls && event.controls.max' class='my-8'>
           <v-slider
             v-model='controls.value'
-            label='Кол-во:'
+            label='Сумма:'
             step='10'
             :min='event.controls.min'
             :max='event.controls.max'
@@ -75,7 +73,7 @@
             class='flex-grow-1'
             color='secondary'
             :disabled='isActionsDisabled'
-            @click='clickAction({text: "понял"})'
+            @click='clickAction({text: "продолжить"})'
           >
             Пропустить ход
           </v-btn>
@@ -105,7 +103,7 @@ export default {
   computed: {
     isSkipButtonVisible() {
       if (this.event.actions) {
-        return !!this.event.actions.find(action => action.text !== 'понял')
+        return !!this.event.actions.find(action => action.text !== 'продолжить')
       }
 
       return false
@@ -141,7 +139,7 @@ export default {
       let type, value
 
       switch (action.text) {
-        case 'понял':
+        case 'продолжить':
           type = 'skip'
           value = this.event.controls ? this.event.controls.value : undefined
           break

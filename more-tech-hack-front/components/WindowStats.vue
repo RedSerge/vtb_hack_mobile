@@ -34,7 +34,7 @@
     </div>
 
     <div>
-      <v-subheader>Продукты</v-subheader>
+      <v-subheader>Рекомендации</v-subheader>
       <div class='d-flex flex-column' :class='$style.cards'>
 
         <v-card elevation='4' class='px-4 py-6' :class='$style["bg-one"]'>
