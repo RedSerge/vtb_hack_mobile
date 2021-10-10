@@ -1,0 +1,71 @@
+/* VTB Group Web Demi Bold */
+@font-face {
+  font-weight: normal;
+  font-family: PrimaryFontFamily;
+  src: url("~@/assets/fonts/VTB65Web.woff2") format("woff2"),
+  url("~@/assets/fonts/VTB65Web.woff") format("woff"),
+  url("~@/assets/fonts/VTB65Web.ttf") format("truetype");
+  font-style: normal;
+}
+
+/* VTB Group Web Book */
+@font-face {
+  font-weight: normal;
+  font-family: SecondaryFontFamily;
+  src: url("~@/assets/fonts/VTB55Web.woff2") format("woff2"),
+  url("~@/assets/fonts/VTB55Web.woff") format("woff"),
+  url("~@/assets/fonts/VTB55Web.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-Bold.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-Bold.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-Bold.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-DemiBold.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-DemiBold.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-DemiBold.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 550;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-SemiBold.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-SemiBold.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-SemiBold.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-Medium.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-Medium.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-Medium.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-Regular.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-Regular.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-weight: 300;
+  font-family: VTBGroupUI;
+  src: url("~@/assets/fonts/VTBGroupUI-Light.woff2") format("woff2"), url("~@/assets/fonts/VTBGroupUI-Light.woff") format("woff"),
+  url("~@/assets/fonts/VTBGroupUI-Light.ttf") format("truetype");
+  font-style: normal;
+}
+
+.v-application {
+  font-family: $body-font-family, sans-serif !important;
+}
