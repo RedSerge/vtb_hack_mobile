@@ -5,6 +5,7 @@ class Event:
             single=False,
             instant_cash=0,
             cash_per_turn=0,
+            action_type=0,
             turns=-1,
             turns_left=-1,
             enable_events=None,
@@ -23,6 +24,7 @@ class Event:
         self.disable_events = disable_events if disable_events is not None else set()
         self.disable_objects = disable_objects if disable_objects is not None else set()
         self.count = count
+        self.action_type = action_type
 
     def spend_turn(self):
         if self.turns_left == 0:

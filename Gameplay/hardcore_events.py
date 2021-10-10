@@ -1,4 +1,4 @@
-from events import Event, ComplexEvent
+from Gameplay.events import Event, ComplexEvent
 
 #   Independent: Actions, SeriousBusiness, BuyHouse, GoodCompany, EnterHack
 
@@ -6,6 +6,7 @@ from events import Event, ComplexEvent
 class Actions(ComplexEvent):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.action_type = 2
         self.positive = True
         self.single = True
         self.cash_per_turn = -500
@@ -27,6 +28,7 @@ class Actions(ComplexEvent):
 class AdvancedActions(ComplexEvent):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.action_type = 2
         self.positive = False
         self.single = True
         self.cash_per_turn = 125
@@ -48,6 +50,7 @@ class SeriousBusiness(Event):
         self.positive = True
         self.single = True
         self.instant_cash = -1000
+        self.action_type = 1
         self.enable_events = {
             SeriousInsurance,
             SeriousGrowth,
@@ -81,6 +84,7 @@ class SeriousInsurance(Event):
         self.positive = True
         self.single = True
         self.instant_cash = -200
+        self.action_type = 1
         self.disable_events = {
             SeriousFailure
         }
@@ -133,6 +137,7 @@ class BuyHouse(Event):
         super().__init__(*args, **kwargs)
         self.positive = True
         self.single = True
+        self.action_type = 1
         self.instant_cash = -1100
         self.cash_per_turn = 150
         self.enable_events = {
@@ -151,6 +156,7 @@ class SellHouse(Event):
         super().__init__(*args, **kwargs)
         self.positive = True
         self.single = True
+        self.action_type = 1
         self.instant_cash = 1300
         self.cash_per_turn = -150
 
@@ -166,6 +172,7 @@ class GoodCompany(Event):
         super().__init__(*args, **kwargs)
         self.positive = True
         self.single = True
+        self.action_type = 1
         self.instant_cash = 77
         self.enable_events = {
             BetterCompany
@@ -183,6 +190,7 @@ class BetterCompany(Event):
         super().__init__(*args, **kwargs)
         self.positive = True
         self.single = True
+        self.action_type = 1
         self.instant_cash = 112
         self.enable_events = {
             BetterCompany
@@ -200,6 +208,7 @@ class EnterHack(Event):
         super().__init__(*args, **kwargs)
         self.positive = True
         self.single = True
+        self.action_type = 1
         self.enable_events = {
             WinHack
         }

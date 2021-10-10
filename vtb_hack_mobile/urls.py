@@ -19,11 +19,20 @@ from django.urls import path
 from MobileApp.views import (
     NextEventView,
     ResetEventView,
+    SelectBuyView,
+    SelectCancelView,
+    SelectOkView,
+    SelectSellView,
+    StatusView,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/reset-event', ResetEventView.as_view()),
     path('api/get-next-event', NextEventView.as_view()),
-    path('/api/status', StatusView.as_view()),
+    path('api/status', StatusView.as_view()),
+    path('api/event-ok', SelectOkView.as_view()),
+    path('api/event-cancel', SelectCancelView.as_view()),
+    path('api/event-sell', SelectSellView.as_view()),
+    path('api/event-buy', SelectBuyView.as_view()),
 ]
